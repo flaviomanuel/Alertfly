@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Alertfly.App", "Alertfly.App", "{E6DDB9AD-E8A0-4EB6-9605-D8952EA63C26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alertfly.App.Api", "Alertfly.App.Api\Alertfly.App.Api.csproj", "{D0BD38D9-506C-469B-B49F-440B52F3A39D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alertfly.App.Core", "Alertfly.App.Core\Alertfly.App.Core.csproj", "{92E7E675-6333-4330-9D36-F7467CBD024E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alertfly.App.Infrastructure", "Alertfly.App.Infrastructure\Alertfly.App.Infrastructure.csproj", "{46A1C797-D62C-4C88-9F45-489C9D433780}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alertfly.App.Application", "Alertfly.App.Application\Alertfly.App.Application.csproj", "{4D820A5B-2D40-4A60-9567-522D1580CDDD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Alertfly.SendAlert", "Alertfly.SendAlert", "{0F7A43B2-0423-499C-AB44-25499DC363B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alertfly.SendAlert.Api", "Alertfly.SendAlert.Api\Alertfly.SendAlert.Api.csproj", "{526EA475-F748-42D4-9DD3-88467C7694B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0BD38D9-506C-469B-B49F-440B52F3A39D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0BD38D9-506C-469B-B49F-440B52F3A39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0BD38D9-506C-469B-B49F-440B52F3A39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0BD38D9-506C-469B-B49F-440B52F3A39D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92E7E675-6333-4330-9D36-F7467CBD024E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92E7E675-6333-4330-9D36-F7467CBD024E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92E7E675-6333-4330-9D36-F7467CBD024E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92E7E675-6333-4330-9D36-F7467CBD024E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46A1C797-D62C-4C88-9F45-489C9D433780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A1C797-D62C-4C88-9F45-489C9D433780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A1C797-D62C-4C88-9F45-489C9D433780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A1C797-D62C-4C88-9F45-489C9D433780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D820A5B-2D40-4A60-9567-522D1580CDDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D820A5B-2D40-4A60-9567-522D1580CDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D820A5B-2D40-4A60-9567-522D1580CDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D820A5B-2D40-4A60-9567-522D1580CDDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{526EA475-F748-42D4-9DD3-88467C7694B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{526EA475-F748-42D4-9DD3-88467C7694B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{526EA475-F748-42D4-9DD3-88467C7694B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{526EA475-F748-42D4-9DD3-88467C7694B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D0BD38D9-506C-469B-B49F-440B52F3A39D} = {E6DDB9AD-E8A0-4EB6-9605-D8952EA63C26}
+		{92E7E675-6333-4330-9D36-F7467CBD024E} = {E6DDB9AD-E8A0-4EB6-9605-D8952EA63C26}
+		{46A1C797-D62C-4C88-9F45-489C9D433780} = {E6DDB9AD-E8A0-4EB6-9605-D8952EA63C26}
+		{4D820A5B-2D40-4A60-9567-522D1580CDDD} = {E6DDB9AD-E8A0-4EB6-9605-D8952EA63C26}
+		{526EA475-F748-42D4-9DD3-88467C7694B0} = {0F7A43B2-0423-499C-AB44-25499DC363B8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D502BE2E-5AA1-47CD-9017-FC073CB9EF0D}
+	EndGlobalSection
+EndGlobal
