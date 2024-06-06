@@ -15,6 +15,7 @@ namespace Alertfly.App.Core.Entities
         public string Name { get; private set; }
         public string Email { get; private set; }
         public string PhoneNumber { get; private set; }
+        public List<UserFlight>? UserFlights { get; private set; }   
 
     }
 }
