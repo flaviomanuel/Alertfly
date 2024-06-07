@@ -12,6 +12,8 @@ namespace Alertfly.App.Infrastructure.Persistence.Repositories
             _context = context;
         }
 
+        public Task<User?> GetByIdAsync(Guid id) => _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+        public Task<List<User>> GetAllAsync(Guid id) => _context.Users.ToListAsync();
         public async Task<User> AddAsync(User user)
         {
             await _context.Users.AddAsync(user);
@@ -20,18 +22,6 @@ namespace Alertfly.App.Infrastructure.Persistence.Repositories
 
             return user;
         }
-
-        public async void DeleteByIdAsync(User user)
-        {
-            _context.Users.Remove(user);
-
-            await _context.SaveChangesAsync();
-        }
-
-        public Task<List<User>> GetAllAsync(Guid id) => _context.Users.ToListAsync();
-
-        public Task<User?> GetByIdAsync(Guid id) => _context.Users.FirstOrDefaultAsync(x => x.Id == id);
-
         public async Task<User> UpdateAsync(User user)
         {
             _context.Users.Update(user);
@@ -40,5 +30,12 @@ namespace Alertfly.App.Infrastructure.Persistence.Repositories
 
             return user;
         }
+        public async Task DeleteByIdAsync(User user)
+        {
+            _context.Users.Remove(user);
+
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

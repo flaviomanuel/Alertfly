@@ -8,6 +8,6 @@ namespace Alertfly.App.Core.Interfaces.Repositories
         Task<List<User>> GetAllAsync(Guid id);
         Task<User> AddAsync(User user);
         Task<User> UpdateAsync(User user);
-        Task<User> DeleteByIdAsync(User user);
+        Task DeleteByIdAsync(User user);
     }
 }
