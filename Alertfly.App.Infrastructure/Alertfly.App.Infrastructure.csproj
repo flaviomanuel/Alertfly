@@ -18,8 +18,4 @@
     <ProjectReference Include="..\Alertfly.App.Core\Alertfly.App.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Persistence\Repositories\" />
-  </ItemGroup>
-
 </Project>
