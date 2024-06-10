@@ -1,4 +1,8 @@
+using Alertfly.App.Application.Commands.AddUser;
+using Alertfly.App.Core.Interfaces.Repositories;
 using Alertfly.App.Infrastructure.Persistence;
+using Alertfly.App.Infrastructure.Persistence.Repositories;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,11 +12,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
+
 var CONNECTION_STRING = builder.Configuration.GetConnectionString("AlertflyCs");
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(CONNECTION_STRING));
+
+builder.Services.AddMediatR(typeof(AddUserCommand));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserFlightRepository, UserFlightRepository>();
 
 var app = builder.Build();
 

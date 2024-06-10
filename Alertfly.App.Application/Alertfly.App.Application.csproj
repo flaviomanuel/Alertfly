@@ -6,4 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Alertfly.App.Core\Alertfly.App.Core.csproj" />
+    <ProjectReference Include="..\Alertfly.App.Infrastructure\Alertfly.App.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
