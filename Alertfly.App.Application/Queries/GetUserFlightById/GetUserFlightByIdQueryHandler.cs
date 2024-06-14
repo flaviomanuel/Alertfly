@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace Alertfly.App.Application.Queries.GetUserFlightById
 {
-    public class GetUserFlightByIdCommandHandler : IRequestHandler<GetUserFlightByIdCommand, UserFlight?>
+    public class GetUserFlightByIdQueryHandler : IRequestHandler<GetUserFlightByIdQuery, UserFlight?>
     {
         private readonly IUserFlightRepository _userFlightRepository;
 
-        public GetUserFlightByIdCommandHandler(IUserFlightRepository userFlightRepository)
+        public GetUserFlightByIdQueryHandler(IUserFlightRepository userFlightRepository)
         {
             _userFlightRepository = userFlightRepository;
         }
 
-        public async Task<UserFlight?> Handle(GetUserFlightByIdCommand request, CancellationToken cancellationToken)
+        public async Task<UserFlight?> Handle(GetUserFlightByIdQuery request, CancellationToken cancellationToken)
         {
             var user = await _userFlightRepository.GetByIdAsync(request.Id);
 

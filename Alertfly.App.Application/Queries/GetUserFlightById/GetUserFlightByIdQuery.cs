@@ -3,9 +3,9 @@ using MediatR;
 
 namespace Alertfly.App.Application.Queries.GetUserFlightById
 {
-    public class GetUserFlightByIdCommand : IRequest<UserFlight?>
+    public class GetUserFlightByIdQuery : IRequest<UserFlight?>
     {
-        public GetUserFlightByIdCommand(Guid id)
+        public GetUserFlightByIdQuery(Guid id)
         {
             Id = id;
         }
