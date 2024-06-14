@@ -10,11 +10,9 @@ namespace Alertfly.App.Application.Commands.AddUserFlight
             UserId = userId;
             FlightId = flightId;
             AlertAt = alertAt;
-            CreatedAt = DateTime.Now;
         }
 
         public DateTime AlertAt { get; private set; }
-        public DateTime CreatedAt { get; private set; }
         public Guid UserId { get; private set; }
         public Guid FlightId { get; private set; }
     }
