@@ -22,8 +22,11 @@ namespace Alertfly.App.Core.Entities
         public Guid FlightId { get; private set; }
         public Flight? Flight { get; private set; }
 
-    
 
+        public void UpdateAlertAt(DateTime alertAt) 
+        { 
+            AlertAt = alertAt;
+        }
 
 
     }
