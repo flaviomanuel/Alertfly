@@ -1,4 +1,6 @@
-﻿namespace Alertfly.App.Core.Entities
+﻿using System.Data;
+
+namespace Alertfly.App.Core.Entities
 {
     public class Flight : IEntityBase
     {
@@ -17,6 +19,14 @@
         public DateTime FlightDate { get; private set; }
 
         public List<UserFlight>? UserFlights { get; private set; }
+
+        public void Update(string title, string origin, string destiny, DateTime flightDate)
+        {
+            Title = title;
+            Origin = origin;
+            Destiny = Destiny;
+            FlightDate = flightDate;
+        }
 
 
     }
