@@ -1,6 +1,7 @@
 ﻿using Alertfly.App.Application.Commands.AddUser;
 using Alertfly.App.Application.Commands.DeleteUser;
 using Alertfly.App.Application.Commands.UpdateUser;
+using Alertfly.App.Application.Queries.GetUserById;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -43,6 +44,16 @@ namespace Alertfly.App.Api.Controllers
             await _mediator.Send(command);
 
             return Ok();
+        }
+
+        [HttpGet("GetById/{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var command = new GetUserByIdQuery(id);
+
+            var user =  await _mediator.Send(command);
+
+            return Ok(user);
         }
     }
 }
