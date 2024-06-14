@@ -1,10 +1,5 @@
 ﻿using Alertfly.App.Core.Interfaces.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Alertfly.App.Application.Commands.DeleteFlight
 {

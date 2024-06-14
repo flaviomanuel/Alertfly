@@ -1,4 +1,5 @@
 ﻿using Alertfly.App.Application.Commands.AddFlight;
+using Alertfly.App.Application.Commands.DeleteFlight;
 using Alertfly.App.Application.Commands.UpdateFlight;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,16 @@ namespace Alertfly.App.Api.Controllers
         public async Task<IActionResult> Update(UpdateFlightCommand commad)
         {
             await _mediator.Send(commad);
+
+            return Ok();
+        }
+
+        [HttpDelete("Delete/{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var command  = new DeleteFlightCommand(id);
+
+            await _mediator.Send(command);
 
             return Ok();
         }
