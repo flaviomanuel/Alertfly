@@ -8,6 +8,6 @@ namespace Alertfly.App.Core.Interfaces.Repositories
         Task<List<Flight>> GetAllAsync(Guid id);
         Task<Flight> AddAsync(Flight flight);
         Task<Flight> UpdateAsync(Flight flight);
-        Task DeleteByIdAsync(Flight flight);
+        Task DeleteAsync(Flight flight);
     }
 }

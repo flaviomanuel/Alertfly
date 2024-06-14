@@ -30,7 +30,7 @@ namespace Alertfly.App.Infrastructure.Persistence.Repositories
 
             return flight;
         }
-        public async Task DeleteByIdAsync(Flight flight)
+        public async Task DeleteAsync(Flight flight)
         {
             _context.Flights.Remove(flight);
 
