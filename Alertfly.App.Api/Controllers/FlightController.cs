@@ -1,4 +1,5 @@
 ﻿using Alertfly.App.Application.Commands.AddFlight;
+using Alertfly.App.Application.Commands.UpdateFlight;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +21,14 @@ namespace Alertfly.App.Api.Controllers
             await _mediator.Send(commad);
 
             return Created();
+        }
+
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update(UpdateFlightCommand commad)
+        {
+            await _mediator.Send(commad);
+
+            return Ok();
         }
     }
 }
