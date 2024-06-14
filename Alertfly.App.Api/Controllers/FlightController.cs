@@ -1,6 +1,7 @@
 ﻿using Alertfly.App.Application.Commands.AddFlight;
 using Alertfly.App.Application.Commands.DeleteFlight;
 using Alertfly.App.Application.Commands.UpdateFlight;
+using Alertfly.App.Application.Queries.GetFlightById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,6 +41,17 @@ namespace Alertfly.App.Api.Controllers
             await _mediator.Send(command);
 
             return Ok();
+        }
+
+
+        [HttpGet("GetById/{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var command = new GetFlightByIdQuery(id);
+
+           var flight = await _mediator.Send(command);
+
+            return Ok(flight);
         }
     }
 }
