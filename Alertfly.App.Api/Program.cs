@@ -23,6 +23,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IFlightRepository, FlightRepository>();
 builder.Services.AddScoped<IUserFlightRepository, UserFlightRepository>();
 
 var app = builder.Build();
