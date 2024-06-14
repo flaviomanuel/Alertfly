@@ -17,17 +17,17 @@ namespace Alertfly.App.Api.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> Add(AddFlightCommand commad)
+        public async Task<IActionResult> Add(AddFlightCommand command)
         {
-            await _mediator.Send(commad);
+            await _mediator.Send(command);
 
             return Created();
         }
 
         [HttpPut("Update")]
-        public async Task<IActionResult> Update(UpdateFlightCommand commad)
+        public async Task<IActionResult> Update(UpdateFlightCommand command)
         {
-            await _mediator.Send(commad);
+            await _mediator.Send(command);
 
             return Ok();
         }
