@@ -13,7 +13,7 @@ namespace Alertfly.App.Infrastructure.Persistence.Repositories
         }
 
         public async Task<User?> GetByIdAsync(Guid id) => await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
-        public async Task<List<User>> GetAllAsync(Guid id) => await _context.Users.ToListAsync();
+        public async Task<List<User>> GetAllAsync() => await _context.Users.ToListAsync();
         public async Task<User> AddAsync(User user)
         {
             await _context.Users.AddAsync(user);
