@@ -1,4 +1,5 @@
-﻿using Alertfly.App.Core.Entities;
+﻿using Alertfly.App.Application.ViewModels;
+using Alertfly.App.Core.Entities;
 using Alertfly.App.Core.Interfaces.Repositories;
 using MediatR;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Alertfly.App.Application.Queries.GetUserFlightById
 {
-    public class GetUserFlightByIdQueryHandler : IRequestHandler<GetUserFlightByIdQuery, UserFlight?>
+    public class GetUserFlightByIdQueryHandler : IRequestHandler<GetUserFlightByIdQuery, UserFlightViewModel?>
     {
         private readonly IUserFlightRepository _userFlightRepository;
 
@@ -18,11 +19,15 @@ namespace Alertfly.App.Application.Queries.GetUserFlightById
             _userFlightRepository = userFlightRepository;
         }
 
-        public async Task<UserFlight?> Handle(GetUserFlightByIdQuery request, CancellationToken cancellationToken)
+        public async Task<UserFlightViewModel?> Handle(GetUserFlightByIdQuery request, CancellationToken cancellationToken)
         {
-            var user = await _userFlightRepository.GetByIdAsync(request.Id);
+            var userFlight = await _userFlightRepository.GetByIdAsync(request.Id);
 
-            return user;
+            if (userFlight is null) return null;
+
+            var userFlightViewModel = new UserFlightViewModel(userFlight.Id, userFlight.UserId, userFlight.FlightId, userFlight.AlertAt, userFlight.CreatedAt);
+
+            return userFlightViewModel;
         }
     }
 }
