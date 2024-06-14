@@ -17,5 +17,12 @@ namespace Alertfly.App.Core.Entities
         public string PhoneNumber { get; private set; }
         public List<UserFlight>? UserFlights { get; private set; }   
 
+        public void Update(string name, string email, string phoneNumber)
+        {
+            Name = name;
+            Email = email;
+            PhoneNumber = phoneNumber;
+        }
+
     }
 }

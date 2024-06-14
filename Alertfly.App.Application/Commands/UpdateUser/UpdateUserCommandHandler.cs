@@ -15,13 +15,13 @@ namespace Alertfly.App.Application.Commands.UpdateUser
 
         public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-            var userFound = await _userRepository.GetByIdAsync(request.Id);
+            var user = await _userRepository.GetByIdAsync(request.Id);
 
-            if (userFound is null) throw new Exception("User not Found");
+            if (user is null) throw new Exception("User not Found");
 
-            var newUser = new User(request.Name, request.Email, request.PhoneNumber);
+            user.Update(request.Name, request.Email, request.PhoneNumber);
 
-            await _userRepository.UpdateAsync(newUser);
+            await _userRepository.UpdateAsync(user);
 
             return Unit.Value;
         }
