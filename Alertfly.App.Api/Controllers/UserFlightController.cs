@@ -55,5 +55,15 @@ namespace Alertfly.App.Api.Controllers
 
             return Ok(userFlight);
         }
+
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var query = new GetAllUserFlightsQuery();
+
+            var userFlights = await _mediator.Send(query);
+
+            return Ok(userFlights);
+        }
     }
 }
