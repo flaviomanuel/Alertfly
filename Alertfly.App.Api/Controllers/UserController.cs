@@ -1,4 +1,5 @@
 ﻿using Alertfly.App.Application.Commands.AddUser;
+using Alertfly.App.Application.Commands.DeleteUser;
 using Alertfly.App.Application.Commands.UpdateUser;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -28,6 +29,17 @@ namespace Alertfly.App.Api.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateUserCommand command)
         {
             
+            await _mediator.Send(command);
+
+            return Ok();
+        }
+
+
+        [HttpDelete("Delete/{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var command = new DeleteUserCommand(id);
+
             await _mediator.Send(command);
 
             return Ok();
