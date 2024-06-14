@@ -1,0 +1,21 @@
+﻿namespace Alertfly.App.Application.ViewModels
+{
+    public class UserFlightViewModel
+    {
+        public UserFlightViewModel(Guid id, Guid userId, Guid flightId, DateTime alertAt, DateTime createdAt)
+        {
+            Id = id;
+            UserId = userId;
+            FlightId = flightId;
+            AlertAt = alertAt;
+            CreatedAt = createdAt;
+        }
+
+        public Guid Id { get; private set; }
+        public DateTime AlertAt { get; private set; }
+        public DateTime CreatedAt { get; private set; }
+        public Guid UserId { get; private set; }
+        public Guid FlightId { get; private set; }
+
+    }
+}
