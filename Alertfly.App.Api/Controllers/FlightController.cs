@@ -1,6 +1,7 @@
 ﻿using Alertfly.App.Application.Commands.AddFlight;
 using Alertfly.App.Application.Commands.DeleteFlight;
 using Alertfly.App.Application.Commands.UpdateFlight;
+using Alertfly.App.Application.Queries.GetAllFlights;
 using Alertfly.App.Application.Queries.GetFlightById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -52,6 +53,17 @@ namespace Alertfly.App.Api.Controllers
            var flight = await _mediator.Send(command);
 
             return Ok(flight);
+        }
+
+
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var query = new GetAllFlightsQuery();
+
+            var flights = await _mediator.Send(query);
+
+            return Ok(flights);
         }
     }
 }
