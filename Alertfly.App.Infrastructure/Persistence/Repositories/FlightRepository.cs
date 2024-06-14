@@ -11,7 +11,7 @@ namespace Alertfly.App.Infrastructure.Persistence.Repositories
         {
             _context = context;
         }
-        public Task<List<Flight>> GetAllAsync(Guid id) => _context.Flights.ToListAsync();
+        public Task<List<Flight>> GetAllAsync() => _context.Flights.ToListAsync();
         public Task<Flight?> GetByIdAsync(Guid id) => _context.Flights.FirstOrDefaultAsync(x => x.Id == id);
 
         public async Task<Flight> AddAsync(Flight flight)
