@@ -48,9 +48,9 @@ namespace Alertfly.App.Api.Controllers
         [HttpGet("GetById/{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var command = new GetFlightByIdQuery(id);
+            var query = new GetFlightByIdQuery(id);
 
-           var flight = await _mediator.Send(command);
+           var flight = await _mediator.Send(query);
 
             return Ok(flight);
         }

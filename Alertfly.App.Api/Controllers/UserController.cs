@@ -50,9 +50,9 @@ namespace Alertfly.App.Api.Controllers
         [HttpGet("GetById/{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var command = new GetUserByIdQuery(id);
+            var query = new GetUserByIdQuery(id);
 
-            var user =  await _mediator.Send(command);
+            var user =  await _mediator.Send(query);
 
             return Ok(user);
         }
@@ -60,9 +60,9 @@ namespace Alertfly.App.Api.Controllers
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetById()
         {
-            var command = new GetAllUsersQuery();
+            var query = new GetAllUsersQuery();
 
-            var users = await _mediator.Send(command);
+            var users = await _mediator.Send(query);
 
             return Ok(users);
         }
