@@ -1,7 +1,9 @@
 ﻿using Alertfly.App.Application.Commands.AddUserFlight;
 using Alertfly.App.Application.Commands.DeleteUserFlight;
 using Alertfly.App.Application.Commands.UpdateUserAlertAt;
+using Alertfly.App.Application.Queries.GetAllUserFlights;
 using Alertfly.App.Application.Queries.GetAllUsers;
+using Alertfly.App.Application.Queries.GetUserFlightById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,6 +44,16 @@ namespace Alertfly.App.Api.Controllers
             await _mediator.Send(command);
 
             return Ok();
+        }
+
+        [HttpGet("GetById/{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var query = new GetUserFlightByIdQuery(id);
+
+            var userFlight = await _mediator.Send(query);
+
+            return Ok(userFlight);
         }
     }
 }
