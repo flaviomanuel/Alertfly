@@ -24,7 +24,7 @@ namespace Alertfly.App.Core.Entities
         {
             Title = title;
             Origin = origin;
-            Destiny = Destiny;
+            Destiny = destiny;
             FlightDate = flightDate;
         }
 
