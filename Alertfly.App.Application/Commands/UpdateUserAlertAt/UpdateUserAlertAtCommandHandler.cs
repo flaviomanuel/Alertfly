@@ -1,4 +1,6 @@
-﻿using Alertfly.App.Core.Interfaces.Repositories;
+﻿using Alertfly.App.Core.Interfaces;
+using Alertfly.App.Core.Interfaces.Repositories;
+using Alertfly.App.Infrastructure.MessageBus;
 using MediatR;
 
 namespace Alertfly.App.Application.Commands.UpdateUserAlertAt

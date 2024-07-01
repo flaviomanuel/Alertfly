@@ -1,5 +1,8 @@
 ﻿using Alertfly.App.Core.Interfaces;
 using RabbitMQ.Client;
+using RabbitMQ.Client.Exceptions;
+using System.Text;
+using System.Text.Json;
 
 namespace Alertfly.App.Infrastructure.MessageBus
 {
@@ -15,17 +18,32 @@ namespace Alertfly.App.Infrastructure.MessageBus
             };
         }
 
-        public void Publish(string queue, byte[] message)
+        public void Publish(object message, string queue, string routingKey, string exchange)
         {
+
+
+            var messageJson = JsonSerializer.Serialize(message);
+
+            var body = Encoding.UTF8.GetBytes(messageJson);
+
             using (var connection = _factory.CreateConnection())
             {
                 using (var channel = connection.CreateModel())
                 {
+
+                    // Declara exchange
+                    channel.ExchangeDeclare(exchange: exchange, ExchangeType.Topic);
+
+                    // Declara fila
                     channel
                         .QueueDeclare(queue, false, false, false, null);
 
+                    // Vincula Fila ao exchange
+                    channel.QueueBind(queue, exchange, routingKey);
+
+                    // Publica mensagem
                     channel
-                        .BasicPublish(exchange: "", routingKey: queue, basicProperties: null, body: message);
+                        .BasicPublish(exchange, routingKey, basicProperties: null, body);
 
                 }
             }

@@ -2,6 +2,6 @@
 {
     public interface IMessageBusService
     {
-        void Publish(string queue, byte[] message);
+        void Publish(object message, string queue, string routingKey, string exchange);
     }
 }
