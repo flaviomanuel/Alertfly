@@ -1,0 +1,34 @@
+﻿using Alertfly.App.Core.Interfaces;
+using RabbitMQ.Client;
+
+namespace Alertfly.App.Infrastructure.MessageBus
+{
+    public class MessageBusService : IMessageBusService
+    {
+        private readonly ConnectionFactory _factory;
+        public MessageBusService()
+        {
+            _factory = new ConnectionFactory
+            {
+                HostName = "localhost",
+
+            };
+        }
+
+        public void Publish(string queue, byte[] message)
+        {
+            using (var connection = _factory.CreateConnection())
+            {
+                using (var channel = connection.CreateModel())
+                {
+                    channel
+                        .QueueDeclare(queue, false, false, false, null);
+
+                    channel
+                        .BasicPublish(exchange: "", routingKey: queue, basicProperties: null, body: message);
+
+                }
+            }
+        }
+    }
+}

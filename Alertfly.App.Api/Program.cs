@@ -1,5 +1,7 @@
 using Alertfly.App.Application.Commands.AddUser;
+using Alertfly.App.Core.Interfaces;
 using Alertfly.App.Core.Interfaces.Repositories;
+using Alertfly.App.Infrastructure.MessageBus;
 using Alertfly.App.Infrastructure.Persistence;
 using Alertfly.App.Infrastructure.Persistence.Repositories;
 using MediatR;
@@ -25,6 +27,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IFlightRepository, FlightRepository>();
 builder.Services.AddScoped<IUserFlightRepository, UserFlightRepository>();
+builder.Services.AddScoped<IMessageBusService, MessageBusService>();
 
 var app = builder.Build();
 
