@@ -16,12 +16,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Alertfly.SendAlert", "Alertfly.SendAlert", "{0F7A43B2-0423-499C-AB44-25499DC363B8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alertfly.SendAlert.Api", "Alertfly.SendAlert.Api\Alertfly.SendAlert.Api.csproj", "{526EA475-F748-42D4-9DD3-88467C7694B0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A2270548-00E9-461B-B0F1-AA732368830E} = {A2270548-00E9-461B-B0F1-AA732368830E}
+		{DF3C6641-502B-4D5D-8304-CD32E4C329A7} = {DF3C6641-502B-4D5D-8304-CD32E4C329A7}
+		{F2272EAA-A72C-4724-A7D2-89C7D8DA7034} = {F2272EAA-A72C-4724-A7D2-89C7D8DA7034}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alertfly.SendAlert.Core", "Alertfly.SendAlert.Core\Alertfly.SendAlert.Core.csproj", "{DF3C6641-502B-4D5D-8304-CD32E4C329A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alertfly.SendAlert.Core", "Alertfly.SendAlert.Core\Alertfly.SendAlert.Core.csproj", "{DF3C6641-502B-4D5D-8304-CD32E4C329A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alertfly.SendAlert.Infrastructure", "Alertfly.SendAlert.Infrastructure\Alertfly.SendAlert.Infrastructure.csproj", "{A2270548-00E9-461B-B0F1-AA732368830E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alertfly.SendAlert.Infrastructure", "Alertfly.SendAlert.Infrastructure\Alertfly.SendAlert.Infrastructure.csproj", "{A2270548-00E9-461B-B0F1-AA732368830E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alertfly.SendAlert.Application", "Alertfly.SendAlert.Application\Alertfly.SendAlert.Application.csproj", "{F2272EAA-A72C-4724-A7D2-89C7D8DA7034}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alertfly.SendAlert.Application", "Alertfly.SendAlert.Application\Alertfly.SendAlert.Application.csproj", "{F2272EAA-A72C-4724-A7D2-89C7D8DA7034}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
