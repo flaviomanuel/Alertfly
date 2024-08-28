@@ -1,9 +1,8 @@
 ﻿using Alertfly.SendAlert.Core.DTOs;
 using Alertfly.SendAlert.Core.Interfaces;
-using Alertfly.SendAlert.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Alertfly.SendAlert.Infrastructure.Repositories
+namespace Alertfly.SendAlert.Infrastructure.Persistence.Repositories
 {
     public class UserFlightRepository : IUserFlightRepository
     {
@@ -11,7 +10,7 @@ namespace Alertfly.SendAlert.Infrastructure.Repositories
 
         public UserFlightRepository(AlertflyContext context) => _context = context;
 
-        public async Task<UserFlightDetailsDTO?> GetUserFlightDetailsById(Guid userId, Guid flightId)
+        public async Task<UserFlightDetailsDTO?> GetUserFlightDetailsByIdAsync(Guid userId, Guid flightId)
         {
 
             var userFlightDetailsDto = await _context.UserFlights
