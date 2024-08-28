@@ -12,16 +12,17 @@ namespace Alertfly.SendAlert.Infrastructure.Services
             _userFlightRepository = userFlightRepository;
             _taskSendEmailTrigger = taskSendEmailTrigger;
         }
-        public async Task SendAlertWithEmailAsync(UserFlightDetailsDTO userFlightDetails)
+        public async Task SendAlertWithEmailAsync(Guid userId, Guid flightId)
         {
 
-            var userFlightDetailsDto = await _userFlightRepository.GetUserFlightDetailsByIdAsync(userFlightDetails.UserId, userFlightDetails.FlightId);
+            var userFlightDetailsDto = await _userFlightRepository.GetUserFlightDetailsByIdAsync(userId, flightId);
 
-            if (userFlightDetailsDto is null) {
+            if (userFlightDetailsDto is null)
+            {
                 throw new Exception("Informações do voo e do usuário não encontradas! ");
             }
 
-            _taskSendEmailTrigger.CreateTriggerSendEmail(userFlightDetails);
+            _taskSendEmailTrigger.CreateTriggerSendEmail(userFlightDetailsDto);
 
         }
     }

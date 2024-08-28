@@ -4,6 +4,6 @@ namespace Alertfly.SendAlert.Core.Interfaces
 {
     public interface ISendAlertService
     {
-        Task SendAlertWithEmailAsync(UserFlightDetailsDTO userFlightDetails);
+        Task SendAlertWithEmailAsync(Guid userId, Guid flightId);
     }
 }
