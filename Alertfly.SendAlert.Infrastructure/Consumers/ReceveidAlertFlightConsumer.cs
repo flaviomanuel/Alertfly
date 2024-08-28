@@ -1,7 +1,11 @@
-﻿using Alertfly.SendAlert.Infrastructure.IntegrationEvents;
+﻿using Alertfly.SendAlert.Core.Interfaces;
+using Alertfly.SendAlert.Infrastructure.IntegrationEvents;
+using Alertfly.SendAlert.Infrastructure.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 
@@ -63,7 +67,13 @@ namespace Alertfly.SendAlert.Infrastructure.Consumers
 
         private async Task SendAlertAsync(ReceivedAlertFlightIntegrationEvent receivedAlertFlight)
         {
-            throw new NotImplementedException();
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var sendAlertService = scope.ServiceProvider.GetRequiredService<ISendAlertService>();
+
+               await sendAlertService.SendAlertWithEmailAsync(receivedAlertFlight.UserId, receivedAlertFlight.FlightId);
+                
+            }
         }
     }
 }
