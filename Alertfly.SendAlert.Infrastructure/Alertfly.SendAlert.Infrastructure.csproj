@@ -25,8 +25,4 @@
     <ProjectReference Include="..\Alertfly.SendAlert.Core\Alertfly.SendAlert.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Persistence\" />
-  </ItemGroup>
-
 </Project>
