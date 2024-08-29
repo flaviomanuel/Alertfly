@@ -46,8 +46,6 @@ public class AlertflyContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
-        OnModelCreatingPartial(modelBuilder);
     }
 
-    public void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
