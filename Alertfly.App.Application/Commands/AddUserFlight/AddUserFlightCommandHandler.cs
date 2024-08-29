@@ -30,7 +30,7 @@ namespace Alertfly.App.Application.Commands.AddUserFlight
 
             var userFlightViewModel = new UserFlightViewModel(userFlight.Id, userFlight.UserId, userFlight.FlightId, userFlight.AlertAt, userFlight.CreatedAt);
 
-            _messageBusService.Publish(userFlightViewModel, QUEUE_NAME, ROUTING_KEY, QUEUE_NAME);
+            _messageBusService.Publish(userFlightViewModel, QUEUE_NAME, ROUTING_KEY, QUEUE_NAME+"-exchange");
 
             return Unit.Value;
         }
