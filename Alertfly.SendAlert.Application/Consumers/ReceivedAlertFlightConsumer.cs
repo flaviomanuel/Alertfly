@@ -1,16 +1,11 @@
-﻿using Alertfly.SendAlert.Application.ViewModels;
-using Alertfly.SendAlert.Core.Interfaces;
+﻿using Alertfly.SendAlert.Core.Interfaces;
 using Alertfly.SendAlert.Infrastructure.IntegrationEvents;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Alertfly.SendAlert.Application.Consumers
 {
@@ -46,27 +41,35 @@ namespace Alertfly.SendAlert.Application.Consumers
         {
             var consumer = new EventingBasicConsumer(_channel);
 
-            consumer.Received += async (sender, eventArgs) =>
+            consumer.Received += (sender, eventArgs) =>
             {
                 var receivedUserFlightAlertBytes = eventArgs.Body.ToArray();
                 var receivedUserFlightAlertJson = Encoding.UTF8.GetString(receivedUserFlightAlertBytes);
 
-                var receivedAlertFlightViewModel = JsonSerializer.Deserialize<ReceivedAlertFlightIntegrationEvent>(receivedUserFlightAlertJson);
+                var receivedAlertFlightIntegrationEvent = JsonSerializer.Deserialize<ReceivedAlertFlightIntegrationEvent>(receivedUserFlightAlertJson);
 
+                if (receivedAlertFlightIntegrationEvent is null)
+                {
+                    throw new Exception("Erro ao deserializar objeto ReceivedAlertFlightIntegrationEvent!");
+                }
 
-                SendEmailAlert();
+                SendEmailAlert(receivedAlertFlightIntegrationEvent);
 
+                _channel.BasicAck(eventArgs.DeliveryTag, false);
             };
 
+            _channel.BasicConsume(QUEUE_ALERTFLIGHT_NAME, false, consumer);
+
+            return Task.CompletedTask;
         }
 
         private void SendEmailAlert(ReceivedAlertFlightIntegrationEvent receivedAlertFlight)
         {
             using(var scope = _serviceProvider.CreateScope())
             {
-                var sendEmailService = scope.ServiceProvider.GetRequiredService<ISendEmailService>();
+                var sendAlertService = scope.ServiceProvider.GetRequiredService<ISendAlertService>();
 
-                sendEmailService.SendEmail(receivedAlertFlight.e);
+                sendAlertService.SendAlertWithEmailAsync(receivedAlertFlight.UserId, receivedAlertFlight.FlightId);
 
             }
         }
