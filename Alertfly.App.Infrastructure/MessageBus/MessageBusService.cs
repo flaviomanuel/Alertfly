@@ -32,11 +32,11 @@ namespace Alertfly.App.Infrastructure.MessageBus
                 {
 
                     // Declara exchange
-                    channel.ExchangeDeclare(exchange: exchange, ExchangeType.Topic);
+                    channel.ExchangeDeclare(exchange: exchange, ExchangeType.Topic, autoDelete: false);
 
                     // Declara fila
                     channel
-                        .QueueDeclare(queue, false, false, false, null);
+                        .QueueDeclare(queue: queue, durable: false, exclusive: false, autoDelete: false, null);
 
                     // Vincula Fila ao exchange
                     channel.QueueBind(queue, exchange, routingKey);
