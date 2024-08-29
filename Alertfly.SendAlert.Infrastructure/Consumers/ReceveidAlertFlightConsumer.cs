@@ -27,6 +27,7 @@ namespace Alertfly.SendAlert.Infrastructure.Consumers
             var factory = new ConnectionFactory
             {
                 HostName = "localhost",
+            
             };
 
             _connection = factory.CreateConnection();
@@ -36,7 +37,7 @@ namespace Alertfly.SendAlert.Infrastructure.Consumers
             _channel.QueueDeclare(
                 queue: QUEUE_NAME,
                 durable: false,
-                autoDelete: true,
+                autoDelete: false,
                 exclusive: false,
                 arguments: null
             );
