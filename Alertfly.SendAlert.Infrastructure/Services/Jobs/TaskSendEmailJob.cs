@@ -10,30 +10,26 @@ namespace Alertfly.SendAlert.Infrastructure.Services.Jobs
         public DateTime FlightDate { private get; set; }
         public string Origin { private get; set; }
         public string Destiny { private get; set; }
+        public ISendEmailService SendEmailService { private get; set; }
 
-
-
-        private readonly ISendEmailService _sendEmailService;
-        public TaskSendEmailJob(ISendEmailService sendEmailService)
-        {
-            _sendEmailService = sendEmailService;
-        }
-
-        public async Task Execute(IJobExecutionContext context)
+        public Task Execute(IJobExecutionContext context)
         {
             JobKey key = context.JobDetail.Key;
 
             JobDataMap dataMap = context.MergedJobDataMap;
 
             string body = $"Olá {Name}, tudo bem? \n " +
-                $"Lembrete da sua viagem de ${Origin} para ${Destiny}" +
+                $"Lembrete da sua viagem de {Origin} para {Destiny}" +
                 $"Data e horario da viagem: {FlightDate} ";
 
-            string subject = $"Lembrete de viagem ${Origin} p/ ${Destiny}";
+            string subject = $"Lembrete de viagem {Origin} p/ {Destiny}";
 
-            _sendEmailService.SendEmail(Email, subject, body);
+            Console.Out.WriteLineAsync("Sended Email!");
 
-            await Console.Out.WriteLineAsync("Sended Email!");
+            SendEmailService.SendEmail(Email, subject, body);
+
+            return Task.CompletedTask;
+
         }
     }
 }

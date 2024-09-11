@@ -3,6 +3,7 @@ using Alertfly.SendAlert.Infrastructure.Consumers;
 using Alertfly.SendAlert.Infrastructure.Persistence;
 using Alertfly.SendAlert.Infrastructure.Persistence.Repositories;
 using Alertfly.SendAlert.Infrastructure.Services;
+using Alertfly.SendAlert.Infrastructure.Services.Triggers;
 using Microsoft.EntityFrameworkCore;
 using Quartz;
 
@@ -19,6 +20,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserFlightRepository, UserFlightRepository>();
 builder.Services.AddScoped<ISendEmailService, SendEmailService>();
 builder.Services.AddScoped<ISendAlertService, SendAlertService>();
+builder.Services.AddScoped<ITaskSendEmailTrigger, TaskSendEmailTrigger>();
+
 
 
 builder.Services.AddHostedService<ReceveidAlertFlightConsumer>();

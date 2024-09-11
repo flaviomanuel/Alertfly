@@ -22,7 +22,7 @@ namespace Alertfly.SendAlert.Infrastructure.Services
                 throw new Exception("Informações do voo e do usuário não encontradas! ");
             }
 
-            _taskSendEmailTrigger.CreateTriggerSendEmail(userFlightDetailsDto);
+            await _taskSendEmailTrigger.CreateTriggerSendEmailAsync(userFlightDetailsDto);
 
         }
     }
