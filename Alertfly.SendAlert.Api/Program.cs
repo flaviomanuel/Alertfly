@@ -8,10 +8,7 @@ using System.Collections.Specialized;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 var CONNECTION_STRING = builder.Configuration.GetConnectionString("AlertflyCs");
 
@@ -27,7 +24,6 @@ builder.Services.AddHostedService<ReceveidAlertFlightConsumer>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -40,17 +36,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-var properties = new NameValueCollection()
-{
-    ["quartz.jobStore.type"] = "Quartz.Simpl.RAMJobStore, Quartz",
-    ["quartz.scheduler.instanceName"] = "myQuartzScheduler"
-};
 
-IScheduler scheduler = await SchedulerBuilder.Create(properties)
-        .UseDefaultThreadPool(x => x.MaxConcurrency = 5)
-        .WithMisfireThreshold(TimeSpan.FromSeconds(60))
-        .BuildScheduler();
 
-await scheduler.Start();
-        ;
 app.Run();
+
