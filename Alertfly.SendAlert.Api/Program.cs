@@ -2,9 +2,9 @@ using Alertfly.SendAlert.Core.Interfaces;
 using Alertfly.SendAlert.Infrastructure.Consumers;
 using Alertfly.SendAlert.Infrastructure.Persistence;
 using Alertfly.SendAlert.Infrastructure.Persistence.Repositories;
+using Alertfly.SendAlert.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Quartz;
-using System.Collections.Specialized;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +17,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUserFlightRepository, UserFlightRepository>();
+builder.Services.AddScoped<ISendEmailService, SendEmailService>();
+builder.Services.AddScoped<ISendAlertService, SendAlertService>();
 
 
 builder.Services.AddHostedService<ReceveidAlertFlightConsumer>();
